@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skilder",
+  "version": "0.1.0",
+  "description": "Connect any agent to a Skilder workspace: the roles, skills, tools and Apps its admins publish, served live over MCP and governed there.",
+  "author": {
+    "name": "skilder.ai SA",
+    "email": "hello@skilder.ai",
+    "url": "https://skilder.ai"
+  },
+  "homepage": "https://docs.skilder.ai/connect-your-agent",
+  "repository": "https://github.com/skilder-ai/plugin",
+  "license": "MIT",
+  "keywords": ["skilder", "mcp", "agent-skills", "roles", "governance"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/using-skilder/SKILL.md",
+      "interface": {
+        "displayName": "Skilder",
+        "shortDescription": "Governed skills for agents",
+        "longDescription": "Skilder is where a team builds, shares and governs the skills and tools its AI agents use at work. This plugin connects the agent to the team's Skilder workspace over MCP with a browser sign-in. The agent then starts each task with init_skilder, learns the role the workspace suggests, and runs that role's skills and tools through Skilder, with every call recorded against a session. Roles, skills, tools and Apps are served live by the workspace and never bundled here.",
+        "developerName": "skilder.ai SA",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://skilder.ai",
+        "supportURL": "https://github.com/skilder-ai/plugin/issues",
+        "privacyPolicyURL": "https://www.skilder.ai/en/privacy",
+        "termsOfServiceURL": "https://www.skilder.ai/en/terms",
+        "defaultPrompt": [
+          "Use Skilder to find the role that fits this task and do it with that role's skills.",
+          "Use Skilder to show what roles and skills my workspace publishes."
+        ],
+        "brandColor": "#06B6D4",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
