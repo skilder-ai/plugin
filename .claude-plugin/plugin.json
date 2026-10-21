@@ -2,7 +2,7 @@
   "name": "skilder",
   "displayName": "Skilder",
   "version": "0.1.0",
-  "description": "Connect any agent to a Skilder workspace: the roles, skills, tools and Apps its admins publish, served live over MCP and governed there.",
+  "description": "Connect any agent to a Skilder workspace, where AI builders orchestrate the capabilities their agents use: plugins composed of skills, MCP tools and MCP Apps, served live over MCP and governed there.",
   "author": {
     "name": "skilder.ai SA",
     "email": "hello@skilder.ai",
@@ -11,12 +11,22 @@
   "homepage": "https://docs.skilder.ai/connect-your-agent",
   "repository": "https://github.com/skilder-ai/plugin",
   "license": "MIT",
-  "keywords": ["skilder", "mcp", "agent-skills", "roles", "governance"],
+  "keywords": [
+    "skilder",
+    "plugins",
+    "mcp",
+    "mcp-apps",
+    "agent-skills",
+    "orchestration",
+    "governance"
+  ],
   "icon": "./assets/logo.png",
   "documentationUrl": "https://docs.skilder.ai/connect-your-agent",
   "supportUrl": "https://github.com/skilder-ai/plugin/issues",
   "privacyPolicyUrl": "https://www.skilder.ai/en/privacy",
   "termsOfServiceUrl": "https://www.skilder.ai/en/terms",
-  "commands": ["./claude/commands/skilder.md"],
+  "commands": [
+    "./claude/commands/skilder.md"
+  ],
   "hooks": "./claude/hooks.json"
 }

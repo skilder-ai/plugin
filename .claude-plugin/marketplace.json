@@ -1,6 +1,6 @@
 {
   "name": "skilder-ai",
-  "description": "Plugins published by skilder.ai SA. One plugin: skilder, the entry point to a Skilder workspace.",
+  "description": "Plugins published by skilder.ai SA. One plugin: skilder, the entry point to a Skilder workspace, where AI builders orchestrate the capabilities their agents use.",
   "owner": {
     "name": "skilder.ai SA",
     "email": "hello@skilder.ai",
@@ -10,9 +10,17 @@
     {
       "name": "skilder",
       "source": "./",
-      "description": "Connect any agent to a Skilder workspace: the roles, skills, tools and Apps its admins publish, served live over MCP and governed there.",
+      "description": "Connect any agent to a Skilder workspace, where AI builders orchestrate the capabilities their agents use: plugins composed of skills, MCP tools and MCP Apps, served live over MCP and governed there.",
       "category": "productivity",
-      "tags": ["skilder", "mcp", "agent-skills", "roles", "governance"]
+      "tags": [
+        "skilder",
+        "plugins",
+        "mcp",
+        "mcp-apps",
+        "agent-skills",
+        "orchestration",
+        "governance"
+      ]
     }
   ]
 }

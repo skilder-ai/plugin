@@ -3,7 +3,7 @@
 ## What this plugin does, in full
 
 - It configures one remote MCP server, `https://app.skilder.ai/mcp`, operated by skilder.ai SA. Sign-in is OAuth 2.1 in the user's browser; the plugin carries no key, token or secret.
-- It ships five skills (text files) and, for Claude Code and Cowork, one command and two hooks. The hooks are plain shell scripts: one adds a line of context at session start, the other writes a small file (`sessionId`, `createdAt`, `taskSummary`) under the plugin's data directory, mode 0600, so a resumed conversation can continue its Skilder session. Neither makes a network call or changes any permission.
+- It ships three skills (text files) and, for Claude Code and Cowork, one command and two hooks. The hooks are plain shell scripts: one adds a line of context at session start, the other writes a small file (`sessionId`, `createdAt`, `taskSummary`) under the plugin's data directory, mode 0600, so a resumed conversation can continue its Skilder session. Neither makes a network call or changes any permission.
 - It bundles no executable, no stdio server, no package install.
 
 Everything an agent does with Skilder goes through that MCP server and is recorded in the user's workspace, where its admins see it in Activity and where the user revokes an application under Personal settings → Connected apps.

@@ -2,9 +2,11 @@
 
 [![Live on skills.sh](https://img.shields.io/badge/skills.sh-skilder--ai%2Fplugin-0e7490)](https://skills.sh/skilder-ai/plugin)
 
-The entry point to a [Skilder](https://skilder.ai) workspace, for any AI agent that installs plugins. Skilder is where a team builds, shares and governs the skills and tools its agents use at work. This plugin connects the agent to the team's workspace over MCP and teaches it the way Skilder works: start the task, learn the role, then act, with a session id on every call.
+[Skilder](https://skilder.ai) is where AI builders orchestrate the capabilities their agents use at work. A builder composes plugins from skills, MCP tools and MCP Apps, publishes them to a workspace, and Skilder serves them live to any agent over MCP: the right plugin for the task, under the workspace's permissions and guardrails, with a record of every call.
 
-The roles, skills, tools and Apps themselves stay in the workspace, versioned and governed there, and are served live at the moment of the call. Nothing of that content is bundled here, and this repository is not a catalog of it: it holds one plugin, the entry, and a marketplace of that one plugin so administrators can govern it.
+This plugin is the entry point. It connects the agent to the workspace and teaches it the way Skilder works: start the task, learn the plugin that fits, then act, with a session id on every call.
+
+The plugins, skills, tools and Apps themselves stay in the workspace, versioned and governed there, and are served at the moment of the call. Nothing of that content is bundled here, and this repository is not a catalog of it: it holds one plugin, the entry, and a marketplace of that one plugin so administrators can govern it.
 
 ## Install
 
@@ -30,7 +32,7 @@ Three words, three different things.
 
 - **The plugin** is the entry. It configures the connection and teaches the agent how Skilder works. It is the same for everyone and changes only when that protocol changes.
 - **The marketplace** is the governance handle of the entry. A client's administrator allows or blocks marketplaces and installs their plugins by policy; this repository is a marketplace of one plugin so that handle exists. It is not a catalog of a workspace's content.
-- **The workspace** is where the content lives: the roles, skills, tools and Apps a team's admins publish, with versions, permissions, guardrails and a record of every call. A marketplace hands out copies that age on each machine; Skilder serves the published version at the moment of the call, to the person signed in, with the scope their session has learned. That is why none of it is bundled here.
+- **The workspace** is where the capabilities live: the plugins a team's builders compose from skills, MCP tools and MCP Apps, with versions, permissions, guardrails and a record of every call. A marketplace hands out copies that age on each machine; Skilder serves the published version at the moment of the call, to the person signed in, with the scope their session has learned. That is why none of it is bundled here. In the workspace itself a plugin is called a role, the job an agent takes on; `init_skilder` and `learn` use that word.
 
 ## What the plugin does, in full
 
@@ -39,7 +41,7 @@ Three words, three different things.
 | Server | One remote MCP server, `https://app.skilder.ai/mcp`, Streamable HTTP, operated by skilder.ai SA ([privacy](https://www.skilder.ai/en/privacy), [terms](https://www.skilder.ai/en/terms)). |
 | Credentials | None in the plugin. OAuth 2.1 in the browser; the token is issued to the MCP client and stored by it. |
 | What flows out | The one-sentence task summary the agent writes for `init_skilder`, and the tool calls it makes against the chosen workspace. Both are recorded in that workspace for its admins, under a session. |
-| What flows in | The roles, skills, tool schemas, files and Apps the workspace's own admins published. |
+| What flows in | The plugins, skills, tool schemas, files and MCP Apps the workspace's own builders published. |
 | What stays local | On Claude Code and Cowork only: one small file per project under the plugin's data directory, mode 0600, holding the Skilder session id, when it was issued and the task summary, so a resumed conversation can continue its session. Nothing else is written. |
 | Revoke | Personal settings → Connected apps in Skilder. Removing the server from the client stops that client from using the grant. |
 
@@ -47,7 +49,7 @@ Three words, three different things.
 
 | Path | Loaded by | Purpose |
 |---|---|---|
-| `skills/using-skilder` | every client | The entry protocol: `init_skilder` with a task summary, learn the role then the skill, the session id on every call, read vs write, files, Apps, feedback, and what each refusal means. |
+| `skills/using-skilder` | every client | The entry protocol: `init_skilder` with a task summary, learn the plugin (role) then the skill, the session id on every call, read vs write, files, MCP Apps, feedback, and what each refusal means. |
 | `skills/connect-to-skilder` | every client | Connects a client that has no Skilder server yet: discloses the connection, asks once, adds the entry, hands over to the browser sign-in. Recognises the plugin's own server and never adds a duplicate. |
 | `skills/import-skills-to-skilder` | every client | Imports the Agent Skills already on the machine into the workspace, as drafts, for a workspace admin. |
 | `claude/commands/skilder.md` | Claude Code, Cowork | `/skilder <task>`: summarises the task, calls `init_skilder`, reports the suggested role, learns it. |
@@ -61,10 +63,10 @@ The skills follow the open [Agent Skills](https://agentskills.io) format, and th
 
 ## How a task runs
 
-1. The agent calls `init_skilder` with a one-sentence summary of the task it wrote itself. Skilder answers with the role that fits, or candidates, or the catalog, and a session id.
-2. The agent learns the role, then the skill the task needs. With session tracking on, a tool is runnable only once its skill has been learned in that session.
-3. The agent runs the skill's tools through `run_read_tool` and `run_write_tool`, or its scripts through `execute_script`, with the session id. Skilder applies the workspace's permissions and guardrails and records each call.
-4. At the end, `feedback_skill` tells the skill's authors what worked.
+1. The agent calls `init_skilder` with a one-sentence summary of the task it wrote itself. Skilder answers with the plugin that fits, or candidates, or the catalog, and a session id.
+2. The agent learns the plugin (`learn roles/<name>`), then the skill the task needs. With session tracking on, a tool is runnable only once its skill has been learned in that session.
+3. The agent runs the skill's tools through `run_read_tool` and `run_write_tool`, its scripts through `execute_script`, and opens the skill's MCP Apps with `open_app` where the client renders cards, with the session id on each call. Skilder applies the workspace's permissions and guardrails and records each call.
+4. At the end, `feedback_skill` tells the plugin's builders what worked.
 
 Docs: [docs.skilder.ai](https://docs.skilder.ai) · Issues: [github.com/skilder-ai/plugin/issues](https://github.com/skilder-ai/plugin/issues) · Security: [SECURITY.md](SECURITY.md)
 
