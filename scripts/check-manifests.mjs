@@ -82,6 +82,18 @@ if (marketplace) {
   if (entry?.version) fail('.claude-plugin/marketplace.json: leave version out of the entry; plugin.json carries it');
 }
 
+// Codex marketplace points at this plugin too, with its policy.
+const codexMarketplace = read('.agents/plugins/marketplace.json');
+if (codexMarketplace) {
+  if (codexMarketplace.name !== marketplace?.name) fail(`.agents/plugins/marketplace.json: name "${codexMarketplace.name}" differs from the Claude marketplace "${marketplace?.name}"`);
+  const entry = (codexMarketplace.plugins ?? []).find((p) => p.name === portable?.name);
+  if (!entry) fail('.agents/plugins/marketplace.json: no entry named like plugin.json');
+  else {
+    if (entry.source?.source !== 'local' || !['./', '.'].includes(entry.source?.path)) fail('.agents/plugins/marketplace.json: the entry must be a local source at the repository root');
+    if (!entry.policy?.installation || !entry.policy?.authentication) fail('.agents/plugins/marketplace.json: the entry needs policy.installation and policy.authentication');
+  }
+}
+
 // Names agree.
 if (portable && claude && portable.name !== claude.name) fail(`plugin.json name "${portable.name}" differs from .claude-plugin/plugin.json "${claude.name}"`);
 if (gemini && portable && gemini.name !== portable.name) fail(`gemini-extension.json name "${gemini.name}" differs from plugin.json "${portable.name}"`);

@@ -1,0 +1,20 @@
+{
+  "name": "skilder-ai",
+  "interface": {
+    "displayName": "Skilder"
+  },
+  "plugins": [
+    {
+      "name": "skilder",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

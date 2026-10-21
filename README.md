@@ -4,22 +4,33 @@
 
 The entry point to a [Skilder](https://skilder.ai) workspace, for any AI agent that installs plugins. Skilder is where a team builds, shares and governs the skills and tools its agents use at work. This plugin connects the agent to the team's workspace over MCP and teaches it the way Skilder works: start the task, learn the role, then act, with a session id on every call.
 
-The roles, skills, tools and Apps themselves stay in the workspace, versioned and governed there, and are served live. Nothing of that content is bundled here.
+The roles, skills, tools and Apps themselves stay in the workspace, versioned and governed there, and are served live at the moment of the call. Nothing of that content is bundled here, and this repository is not a catalog of it: it holds one plugin, the entry, and a marketplace of that one plugin so administrators can govern it.
 
 ## Install
 
-| Client | How |
-|---|---|
-| Claude Code | `claude plugin marketplace add skilder-ai/plugin` then `claude plugin install skilder@skilder-ai` |
-| claude.ai, Claude Desktop, Cowork | Customize › Plugins › Add, from this repository (the directory listing follows) |
-| GitHub Copilot CLI | `copilot plugin install skilder-ai/plugin` |
-| Codex, ChatGPT | From the plugin directory once listed; until then, add this repository as a plugin marketplace in Codex |
-| Gemini CLI | `gemini extensions install https://github.com/skilder-ai/plugin` |
-| Any agent, skills only | `npx skills add skilder-ai/plugin` |
+Every client can add the plugin directly from this repository. Clients that manage plugins through marketplaces can also add this repository as a marketplace: it lists one plugin, `skilder`, and that is how an administrator allows, installs by default or requires it for a whole team.
+
+| Client | Directly | As a marketplace |
+|---|---|---|
+| Claude Code | `/plugin` › add this repository | `claude plugin marketplace add skilder-ai/plugin` then `claude plugin install skilder@skilder-ai` |
+| claude.ai, Claude Desktop, Cowork | Customize › Plugins › Add, from this repository (the directory listing follows) | Customize › Plugins › Add marketplace, this repository |
+| Codex | Plugins › Add, from this repository | `codex plugin marketplace add skilder-ai/plugin`, then install `skilder` |
+| ChatGPT | From the plugin directory once listed | |
+| GitHub Copilot CLI | `copilot plugin install skilder-ai/plugin` | |
+| Gemini CLI | `gemini extensions install https://github.com/skilder-ai/plugin` | |
+| Any agent, skills only | `npx skills add skilder-ai/plugin` | |
 
 The first Skilder call opens a browser sign-in on app.skilder.ai. The user signs in, picks one workspace and presses Approve. Nothing is granted before that press.
 
 If a `skilder` or `skilder-ai` server was added to the client by hand before the plugin, remove that entry: the plugin's server points at the same endpoint, and the duplicate costs a second sign-in.
+
+## Plugin, marketplace, workspace
+
+Three words, three different things.
+
+- **The plugin** is the entry. It configures the connection and teaches the agent how Skilder works. It is the same for everyone and changes only when that protocol changes.
+- **The marketplace** is the governance handle of the entry. A client's administrator allows or blocks marketplaces and installs their plugins by policy; this repository is a marketplace of one plugin so that handle exists. It is not a catalog of a workspace's content.
+- **The workspace** is where the content lives: the roles, skills, tools and Apps a team's admins publish, with versions, permissions, guardrails and a record of every call. A marketplace hands out copies that age on each machine; Skilder serves the published version at the moment of the call, to the person signed in, with the scope their session has learned. That is why none of it is bundled here.
 
 ## What the plugin does, in full
 
@@ -43,6 +54,7 @@ If a `skilder` or `skilder-ai` server was added to the client by hand before the
 | `claude/hooks.json` + `claude/scripts/` | Claude Code, Cowork | Two shell hooks: a line of context at session start; the session id remembered per project for a resumed conversation. No network, no permission change. |
 | `plugin.json`, `mcp.json` | Codex, Copilot, Cursor, VS Code, Kiro | The Agent Plugins 1.0 manifest and MCP configuration. |
 | `.claude-plugin/`, `.mcp.json` | Claude | The Claude plugin manifest, the marketplace and the MCP configuration. |
+| `.agents/plugins/marketplace.json` | Codex, ChatGPT desktop | The same one-plugin marketplace in Codex's format, with its install and sign-in policy. |
 | `gemini-extension.json` | Gemini CLI | The extension manifest. |
 
 The skills follow the open [Agent Skills](https://agentskills.io) format, and the plugin the [Agent Plugins 1.0](https://agent-plugins.org) standard, with the Claude manifest alongside.
