@@ -19,7 +19,7 @@ A team's business context goes in on the left: its processes, vocabulary, docume
 
 A two-minute tour: an agent connects, takes on a plugin, runs its skills and tools, and opens an MCP App inside the conversation.
 
-<a href="https://drive.google.com/file/d/1eFG90B926FoUHD-z_TA7B1MmisqfQW-N/view">
+<a href="https://youtu.be/3bL_y502_iY">
   <img src="assets/demo.jpg" alt="Watch the Skilder tour: the Warehouse Pulse app open inside an AI assistant" width="800">
 </a>
 
