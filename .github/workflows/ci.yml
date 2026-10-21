@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Manifests, wording, hooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Manifests agree (and match the tag on a release)
+        run: node scripts/check-manifests.mjs
+      - name: Skill and command wording
+        run: node scripts/lint-skills.mjs
+      - name: Hook scripts parse and are executable
+        run: |
+          for f in claude/scripts/*.sh scripts/*.sh; do
+            sh -n "$f"
+            test -x "$f" || { echo "$f is not executable"; exit 1; }
+          done
+      - name: Hooks run on a sample event
+        run: |
+          out=$(printf '{"session_id":"x","cwd":"/tmp/p","hook_event_name":"SessionStart","source":"startup"}' | CLAUDE_PLUGIN_DATA="$RUNNER_TEMP/data" claude/scripts/session-start.sh)
+          echo "$out" | node -e 'const o=JSON.parse(require("fs").readFileSync(0,"utf8")); if(!o.hookSpecificOutput.additionalContext) process.exit(1)'
+          printf '{"cwd":"/tmp/p","tool_name":"mcp__plugin_skilder_skilder__init_skilder","tool_input":{"task_summary":"draft a quote"},"tool_response":{"content":[{"type":"text","text":"Your Skilder session id: `sks-123e4567-e89b-12d3-a456-426614174000`"}]}}' | CLAUDE_PLUGIN_DATA="$RUNNER_TEMP/data" claude/scripts/remember-session.sh
+          key=$(printf '%s' /tmp/p | cksum | cut -d ' ' -f 1)
+          grep -q 'sessionId=sks-123e4567' "$RUNNER_TEMP/data/sessions/$key"
+          out=$(printf '{"session_id":"x","cwd":"/tmp/p","hook_event_name":"SessionStart","source":"resume"}' | CLAUDE_PLUGIN_DATA="$RUNNER_TEMP/data" claude/scripts/session-start.sh)
+          echo "$out" | grep -q 'sks-123e4567'
+      - name: OpenAI package builds without Claude-only files
+        run: |
+          scripts/package-openai.sh
+          ! unzip -l dist/*.zip | grep -E 'claude/|\.claude-plugin|\.mcp\.json|hooks'
+
+  claude-plugin:
+    name: claude plugin validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate the plugin manifest, its hooks and commands, and the marketplace
+        run: |
+          claude plugin validate .claude-plugin/plugin.json --strict
+          claude plugin validate .claude-plugin/marketplace.json --strict
+
+  snyk:
+    name: Snyk agent-scan (when SNYK_TOKEN is set)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Scan the skills
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          if [ -z "$SNYK_TOKEN" ]; then
+            echo "SNYK_TOKEN not set; skipping the scan (add the secret to run it)."
+            exit 0
+          fi
+          uvx snyk-agent-scan@latest --skills skills

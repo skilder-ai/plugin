@@ -1,0 +1,10 @@
+{
+  "name": "skilder",
+  "version": "0.1.0",
+  "description": "Connect any agent to a Skilder workspace: the roles, skills, tools and Apps its admins publish, served live over MCP and governed there.",
+  "mcpServers": {
+    "skilder": {
+      "httpUrl": "https://app.skilder.ai/mcp"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "skilder": {
+      "type": "http",
+      "url": "https://app.skilder.ai/mcp"
+    }
+  }
+}

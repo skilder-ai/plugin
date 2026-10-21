@@ -1,0 +1,8 @@
+# Every change to what agents load as instructions, or to what the directories
+# show as the listing, is reviewed by the owner of the public listing.
+*                 @daniviber
+/skills/          @daniviber
+/claude/          @daniviber
+/README.md        @daniviber
+/plugin.json      @daniviber
+/.claude-plugin/  @daniviber
