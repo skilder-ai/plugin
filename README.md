@@ -8,6 +8,13 @@ This plugin is the entry point. It connects the agent to the workspace and teach
 
 The plugins, skills, tools and Apps themselves stay in the workspace, versioned and governed there, and are served at the moment of the call. Nothing of that content is bundled here, and this repository is not a catalog of it: it holds one plugin, the entry, and a marketplace of that one plugin so administrators can govern it.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/platform-dark.svg">
+  <img src="assets/platform-light.svg" alt="Business context flows into Skilder, where plugins any AI agent can take on are composed of skills, MCP tools, MCP Apps and evals, governed by identity, guardrails and audit, and served to any AI agent." width="1200">
+</picture>
+
+A team's business context goes in on the left: its processes, vocabulary, documents and systems. Skilder turns it into plugins, each composed of skills, MCP tools, MCP Apps and evals, and governs them by default with identity, guardrails and an audit trail. Any AI agent takes them on from the right. This repository is that right-hand arrow.
+
 ## Install
 
 Every client can add the plugin directly from this repository. Clients that manage plugins through marketplaces can also add this repository as a marketplace: it lists one plugin, `skilder`, and that is how an administrator allows, installs by default or requires it for a whole team.

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440" role="img" aria-labelledby="t d">
+<title id="t">How Skilder fits</title><desc id="d">Business context flows into Skilder, where plugins any AI agent can take on are composed of skills, MCP tools, MCP Apps and evals, governed by identity, guardrails and audit, and served to any AI agent.</desc>
+<rect x="0" y="158" width="230" height="120" rx="18" fill="#ffffff" stroke="#e6e0d5" stroke-width="1.6"/>
+<circle cx="115" cy="200" r="22" fill="#0a0a0a"/>
+<g transform="translate(103 205) scale(1.0)" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h6"/></g>
+<text x="115" y="255" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="19" font-weight="700" fill="#0a0a0a" text-anchor="middle">Business context</text>
+<rect x="970" y="158" width="230" height="120" rx="18" fill="#ffffff" stroke="#e6e0d5" stroke-width="1.6"/>
+<circle cx="1085" cy="200" r="22" fill="#0a0a0a"/>
+<g transform="translate(1073 205) scale(1.0)" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.8 4.5 2.5 6.2 7 7-4.5.8-6.2 2.5-7 7-.8-4.5-2.5-6.2-7-7 4.5-.8 6.2-2.5 7-7z"/></g>
+<text x="1085" y="255" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="19" font-weight="700" fill="#0a0a0a" text-anchor="middle">Any AI agent</text>
+<g transform="translate(250 205) scale(1.5)" fill="none" stroke="#6b6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+<g transform="translate(890 205) scale(1.5)" fill="none" stroke="#6b6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+<rect x="320" y="24" width="540" height="388" rx="22" fill="#ffffff" stroke="#e6e0d5" stroke-width="1.6"/>
+<text x="590.0" y="54" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="13" font-weight="700" fill="#6b6b6b" text-anchor="middle" letter-spacing="2.5">SKILDER</text>
+<rect x="336" y="70" width="508" height="84" rx="16" fill="rgba(101,208,234,0.14)" stroke="#65d0ea" stroke-width="2"/>
+<circle cx="382" cy="112" r="27" fill="#0a0a0a"/>
+<g transform="translate(367 97) scale(1.25)" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 9v6"/></g>
+<text x="428" y="108" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="30" font-weight="700" fill="#0a0a0a" text-anchor="start">Plugins</text>
+<text x="428" y="134" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12" font-weight="700" fill="#0a0a0a" text-anchor="start" letter-spacing="1.6">WHAT ANY AI AGENT TAKES ON</text>
+<rect x="336.0" y="166" width="119.5" height="128" rx="14" fill="rgba(101,208,234,0.06)" stroke="#65d0ea" stroke-width="1.2" stroke-opacity="0.7"/>
+<g transform="translate(382.75 182) scale(1.0833333333333333)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></g>
+<text x="395.75" y="236" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="18" font-weight="700" fill="#0a0a0a" text-anchor="middle">Skills</text>
+<text x="395.75" y="260" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">the expertise</text>
+<text x="395.75" y="278" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">inside</text>
+<rect x="465.5" y="166" width="119.5" height="128" rx="14" fill="rgba(101,208,234,0.06)" stroke="#65d0ea" stroke-width="1.2" stroke-opacity="0.7"/>
+<g transform="translate(512.25 182) scale(1.0833333333333333)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g>
+<text x="525.25" y="236" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="18" font-weight="700" fill="#0a0a0a" text-anchor="middle">MCP tools</text>
+<text x="525.25" y="260" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">the systems it</text>
+<text x="525.25" y="278" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">acts on</text>
+<rect x="595.0" y="166" width="119.5" height="128" rx="14" fill="rgba(101,208,234,0.06)" stroke="#65d0ea" stroke-width="1.2" stroke-opacity="0.7"/>
+<g transform="translate(641.75 182) scale(1.0833333333333333)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></g>
+<text x="654.75" y="236" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="18" font-weight="700" fill="#0a0a0a" text-anchor="middle">MCP Apps</text>
+<text x="654.75" y="262" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">the views it shows</text>
+<rect x="724.5" y="166" width="119.5" height="128" rx="14" fill="rgba(101,208,234,0.06)" stroke="#65d0ea" stroke-width="1.2" stroke-opacity="0.7"/>
+<g transform="translate(771.25 182) scale(1.0833333333333333)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></g>
+<text x="784.25" y="236" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="18" font-weight="700" fill="#0a0a0a" text-anchor="middle">Evals</text>
+<text x="784.25" y="262" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12.5" font-weight="400" fill="#6b6b6b" text-anchor="middle">the proof it works</text>
+<rect x="336" y="306" width="508" height="56" rx="14" fill="rgba(101,208,234,0.14)" stroke="#65d0ea" stroke-width="1.2" stroke-opacity="0.7"/>
+<text x="352" y="340" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="11.5" font-weight="700" fill="#6b6b6b" text-anchor="start" letter-spacing="1.4">GOVERNED BY DEFAULT</text>
+<g transform="translate(525 323) scale(0.9166666666666666)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></g>
+<text x="553" y="340" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="16" font-weight="700" fill="#0a0a0a" text-anchor="start">Identity</text>
+<g transform="translate(629 323) scale(0.9166666666666666)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></g>
+<text x="657" y="340" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="16" font-weight="700" fill="#0a0a0a" text-anchor="start">Guardrails</text>
+<g transform="translate(753 323) scale(0.9166666666666666)" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="M13.5 16.5l2 2"/></g>
+<text x="781" y="340" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="16" font-weight="700" fill="#0a0a0a" text-anchor="start">Audit</text>
+<text x="590.0" y="386" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="13" font-weight="400" fill="#6b6b6b" text-anchor="middle">Served live over MCP, to the person signed in, with a session id on every call</text>
+</svg>
