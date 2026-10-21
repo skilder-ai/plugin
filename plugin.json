@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skilder",
   "version": "0.1.0",
-  "description": "Connect any agent to a Skilder workspace: the roles, skills, tools and Apps its admins publish, served live over MCP and governed there.",
+  "description": "Connect any agent to a Skilder workspace, where AI builders orchestrate the capabilities their agents use: plugins composed of skills, MCP tools and MCP Apps, served live over MCP and governed there.",
   "author": {
     "name": "skilder.ai SA",
     "email": "hello@skilder.ai",
@@ -11,24 +11,35 @@
   "homepage": "https://docs.skilder.ai/connect-your-agent",
   "repository": "https://github.com/skilder-ai/plugin",
   "license": "MIT",
-  "keywords": ["skilder", "mcp", "agent-skills", "roles", "governance"],
+  "keywords": [
+    "skilder",
+    "plugins",
+    "mcp",
+    "mcp-apps",
+    "agent-skills",
+    "orchestration",
+    "governance"
+  ],
   "extensions": {
     "com.openai": {
       "onboardingSkill": "./skills/using-skilder/SKILL.md",
       "interface": {
         "displayName": "Skilder",
-        "shortDescription": "Governed skills for agents",
-        "longDescription": "Skilder is where a team builds, shares and governs the skills and tools its AI agents use at work. This plugin connects the agent to the team's Skilder workspace over MCP with a browser sign-in. The agent then starts each task with init_skilder, learns the role the workspace suggests, and runs that role's skills and tools through Skilder, with every call recorded against a session. Roles, skills, tools and Apps are served live by the workspace and never bundled here.",
+        "shortDescription": "Orchestrate agent capabilities",
+        "longDescription": "Skilder is where AI builders orchestrate the capabilities their agents use at work. A builder composes plugins from skills, MCP tools and MCP Apps, publishes them to a workspace, and Skilder serves them live to any agent over MCP: the right plugin for the task, under the workspace's permissions and guardrails, with a record of every call. This plugin is the entry point. It connects the agent to the workspace with a browser sign-in, then the agent starts each task with init_skilder, learns the plugin the workspace suggests, and runs its skills, tools and MCP Apps through Skilder, with every call recorded against a session. Plugins, skills, tools and Apps are served live by the workspace and never bundled here.",
         "developerName": "skilder.ai SA",
         "category": "Productivity",
-        "capabilities": ["Read", "Write"],
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
         "websiteURL": "https://skilder.ai",
         "supportURL": "https://github.com/skilder-ai/plugin/issues",
         "privacyPolicyURL": "https://www.skilder.ai/en/privacy",
         "termsOfServiceURL": "https://www.skilder.ai/en/terms",
         "defaultPrompt": [
-          "Use Skilder to find the role that fits this task and do it with that role's skills.",
-          "Use Skilder to show what roles and skills my workspace publishes."
+          "Use Skilder to find the plugin that fits this task and do it with its skills, tools and Apps.",
+          "Use Skilder to show the plugins my workspace publishes."
         ],
         "brandColor": "#06B6D4",
         "composerIcon": "./assets/icon.png",
