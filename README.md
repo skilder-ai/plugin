@@ -67,7 +67,11 @@ Three words, three different things.
 | `skills/using-skilder` | every client | The entry protocol: `init_skilder` with a task summary, learn the plugin (role) then the skill, the session id on every call, read vs write, files, MCP Apps, feedback, and what each refusal means. |
 | `skills/connect-to-skilder` | every client | Connects a client that has no Skilder server yet: discloses the connection, asks once, adds the entry, hands over to the browser sign-in. Recognises the plugin's own server and never adds a duplicate. |
 | `skills/import-skills-to-skilder` | every client | Imports the Agent Skills already on the machine into the workspace, as drafts, for a workspace admin. |
+| `skills/get-started-with-skilder` | every client | First steps after connecting: what the workspace holds in plain language and one real first task, or, on a new workspace, an import or a first plugin. The onboarding skill ChatGPT and Codex run after install. |
+| `skills/turn-into-skilder-skill` | every client | Drafts skills from this conversation or a document the user names, and creates them as drafts once the user approves the scope (workspace admin). |
+| `skills/review-skilder-activity` | every client | A read-only receipt of what a session did: roles, skills, tools and how each call ended, through the `analytics` tool. |
 | `claude/commands/skilder.md` | Claude Code, Cowork | `/skilder <task>`: summarises the task, calls `init_skilder`, reports the suggested role, learns it. |
+| `claude/commands/{start,import,capture,activity}.md` | Claude Code, Cowork | `/skilder:start`, `/skilder:import`, `/skilder:capture`, `/skilder:activity`: one line each, handing over to the matching skill, so other clients get the same behaviour from the skill alone. |
 | `claude/hooks.json` + `claude/scripts/` | Claude Code, Cowork | Two shell hooks: a line of context at session start; the session id remembered per project for a resumed conversation. No network, no permission change. |
 | `plugin.json`, `mcp.json` | Codex, Copilot, Cursor, VS Code, Kiro | The Agent Plugins 1.0 manifest and MCP configuration. |
 | `.claude-plugin/`, `.mcp.json` | Claude | The Claude plugin manifest, the marketplace and the MCP configuration. |
