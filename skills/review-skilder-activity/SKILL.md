@@ -1,6 +1,6 @@
 ---
 name: review-skilder-activity
-description: Show what Skilder recorded for this session or recent ones, read-only, as a short receipt of the roles, skills and tools used, what each call returned and what failed. Trigger on "what did Skilder do", "show my Skilder activity", "which skills did that use".
+description: Use when the user asks what their agent did through Skilder, such as "what did Skilder do", "which skills did that use", "show my Skilder activity" or "why did that Skilder call fail". Reads the session record through the read-only analytics tool and reports the plugins (roles), skills and tools used and how each call ended. Changes nothing.
 version: 1.0.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:

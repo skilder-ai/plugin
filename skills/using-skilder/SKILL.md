@@ -1,7 +1,7 @@
 ---
 name: using-skilder
-description: Use when the Skilder MCP server is connected and the task may be covered by a workspace role or skill. Covers the order of operations with Skilder (start the session, learn the role, then act), the session id every call carries, read versus write tools, files, Apps and feedback, and what to do when a call is refused.
-version: 1.0.0
+description: Use when the Skilder MCP server is connected and the user asks for work a team plugin (role) or skill may cover, such as drafting, reviewing, reporting or running a business process with the workspace's tools. Covers the order of operations (start a session, learn the role, then the skill, then act), the session id every call carries, read versus write tools, files, Apps, feedback, and what each refusal means. Not for connecting Skilder (connect-to-skilder) or first steps (get-started-with-skilder).
+version: 1.1.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp

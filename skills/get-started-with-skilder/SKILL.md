@@ -1,6 +1,6 @@
 ---
 name: get-started-with-skilder
-description: First steps with a Skilder workspace, right after connecting it. Shows what the workspace holds in plain language and runs one real first task through it, or, on a new workspace, offers to import existing skills or set up a first plugin. Trigger on "Hey Skilder, get me started", "get started with Skilder", "what can Skilder do for me", "set up Skilder", "show me around Skilder".
+description: Use right after Skilder is connected, or when the user asks what Skilder can do, such as "Hey Skilder, get me started", "get started with Skilder", "what's in my Skilder workspace" or "show me around Skilder". Describes the workspace's plugins (roles) in plain language and runs one real first task through the best fit; on a new workspace, offers to import existing skills or set up a first plugin. Not for a user who already named a task (using-skilder).
 version: 1.0.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:

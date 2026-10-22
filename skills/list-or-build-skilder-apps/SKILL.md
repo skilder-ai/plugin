@@ -1,6 +1,6 @@
 ---
-name: build-a-skilder-app
-description: List the Apps in a Skilder workspace (the interactive cards a skill opens in the conversation), open one, or build a first App with the user, from the screen it shows to the workspace tools it reads. Trigger on "list my Skilder Apps", "create a Skilder App", "build an App for this skill", "open the <name> App".
+name: list-or-build-skilder-apps
+description: Use when the user asks about Skilder Apps, the interactive cards a skill opens in the conversation, such as "list my Skilder Apps", "open the <name> App", "create a Skilder App" or "build a dashboard card for this skill". Lists and opens the workspace's Apps, or designs a first App with the user (its screen and the workspace tools it calls) and builds it after their go (workspace admin).
 version: 1.0.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:

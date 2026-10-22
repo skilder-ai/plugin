@@ -1,5 +1,5 @@
 ---
-description: See what Skilder did in this conversation, or recently: the roles, skills and tools used, and how each call ended.
+description: See what Skilder did in this conversation, or recently, with the plugins (roles), skills and tools used and how each call ended.
 argument-hint: "[\"recent\" or a session id, optional]"
 ---
 
