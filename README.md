@@ -67,7 +67,12 @@ Three words, three different things.
 | `skills/using-skilder` | every client | The entry protocol: `init_skilder` with a task summary, learn the plugin (role) then the skill, the session id on every call, read vs write, files, MCP Apps, feedback, and what each refusal means. |
 | `skills/connect-to-skilder` | every client | Connects a client that has no Skilder server yet: discloses the connection, asks once, adds the entry, hands over to the browser sign-in. Recognises the plugin's own server and never adds a duplicate. |
 | `skills/import-skills-to-skilder` | every client | Imports the Agent Skills already on the machine into the workspace, as drafts, for a workspace admin. |
+| `skills/get-started-with-skilder` | every client | First steps after connecting: what the workspace holds in plain language and one real first task, or, on a new workspace, an import or a first plugin. The onboarding skill ChatGPT and Codex run after install. |
+| `skills/capture-work-in-skilder` | every client | Turns this conversation or a named document into skills, a plugin (role), an App or a new version of existing ones, as the work calls for; suggests tools or a connector; builds only after the user approves a short build summary (workspace admin). |
+| `skills/list-or-build-skilder-apps` | every client | Lists the workspace's Apps and opens one, or designs and builds a first App with the user: screen, tools, publish, attach to a skill, each after a go (workspace admin). |
+| `skills/review-skilder-activity` | every client | A read-only receipt of what a session did: roles, skills, tools and how each call ended, through the `analytics` tool. |
 | `claude/commands/skilder.md` | Claude Code, Cowork | `/skilder <task>`: summarises the task, calls `init_skilder`, reports the suggested role, learns it. |
+| `claude/commands/{start,import,capture,activity,app}.md` | Claude Code, Cowork | `/skilder:start`, `/skilder:import`, `/skilder:capture`, `/skilder:activity`, `/skilder:app`: one line each, handing over to the matching skill, so other clients get the same behaviour from the skill alone. |
 | `claude/hooks.json` + `claude/scripts/` | Claude Code, Cowork | Two shell hooks: a line of context at session start; the session id remembered per project for a resumed conversation. No network, no permission change. |
 | `plugin.json`, `mcp.json` | Codex, Copilot, Cursor, VS Code, Kiro | The Agent Plugins 1.0 manifest and MCP configuration. |
 | `.claude-plugin/`, `.mcp.json` | Claude | The Claude plugin manifest, the marketplace and the MCP configuration. |

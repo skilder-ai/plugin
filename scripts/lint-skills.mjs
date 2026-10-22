@@ -7,6 +7,7 @@
 //   - Skilder tool names in prose instead of code spans
 //   - the endpoint URL in a body (it belongs in frontmatter metadata and in code blocks)
 //   - a frontmatter without name, description, version
+//   - an unquoted frontmatter value holding ": ", which YAML reads as a nested mapping
 //
 //   node scripts/lint-skills.mjs
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -36,6 +37,10 @@ for (const file of files) {
   for (const key of isSkill ? ['name', 'description', 'version'] : ['description']) {
     if (!new RegExp(`^${key}:`, 'm').test(frontmatter)) errors.push(`${file}: frontmatter has no ${key}`);
   }
+  frontmatter.split('\n').forEach((line) => {
+    const [, key, value = ''] = line.match(/^([\w-]+):\s*(.*)$/) ?? [];
+    if (key && !/^["'|>]/.test(value) && /:\s/.test(value)) errors.push(`${file}: frontmatter ${key} holds ": " unquoted; YAML reads it as a nested mapping`);
+  });
   const body = text.replace(/^---\n[\s\S]*?\n---/, '');
   const prose = body.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '');
   prose.split('\n').forEach((line, i) => {

@@ -5,7 +5,7 @@ argument-hint: <what you need done>
 
 The user wants this done with Skilder: $ARGUMENTS
 
-If that is empty, ask the user what they need done, and stop.
+If that is empty, ask the user what they need done, and stop. For someone new to Skilder, mention that `/skilder:start` shows the workspace first.
 
 Otherwise:
 

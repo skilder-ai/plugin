@@ -1,7 +1,7 @@
 {
   "name": "skilder",
   "displayName": "Skilder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Connect any agent to a Skilder workspace, where AI builders orchestrate the capabilities their agents use: plugins composed of skills, MCP tools and MCP Apps, served live over MCP and governed there.",
   "author": {
     "name": "skilder.ai SA",
@@ -26,7 +26,12 @@
   "privacyPolicyUrl": "https://www.skilder.ai/en/privacy",
   "termsOfServiceUrl": "https://www.skilder.ai/en/terms",
   "commands": [
-    "./claude/commands/skilder.md"
+    "./claude/commands/skilder.md",
+    "./claude/commands/start.md",
+    "./claude/commands/import.md",
+    "./claude/commands/capture.md",
+    "./claude/commands/activity.md",
+    "./claude/commands/app.md"
   ],
   "hooks": "./claude/hooks.json"
 }
