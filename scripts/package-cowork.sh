@@ -1,6 +1,6 @@
 #!/bin/sh
 # Builds the Microsoft 365 app package that Copilot Cowork installs:
-# dist/skilder-cowork-<version>.zip, a manifest.json with the three skills and
+# dist/skilder-cowork-<version>.zip, a manifest.json with every skill and
 # one connector to the Skilder MCP server, plus the two icons.
 #
 # Microsoft's own converter does the work: `atk import openplugin` reads
@@ -8,9 +8,9 @@
 # Toolkit project. This script then adjusts what the converter cannot know:
 #   - the connector carries no `authorization` block: Cowork registers its own
 #     OAuth client (dynamic client registration), which Skilder accepts
-#   - the M365 version cannot start with 0, so the package carries the plugin's
-#     version with the major raised by one (0.1.0 -> 1.1.0, 1.0.0 -> 2.0.0),
-#     which stays monotonic across every plugin release
+#   - the package has its own version, in scripts/cowork-version: Microsoft
+#     updates an installed app only to a higher version, so raise it with every
+#     package this script publishes and never lower it
 #   - the outline icon is the logo's silhouette in white on transparent
 #
 # Usage: scripts/package-cowork.sh            (needs node, npx, ImageMagick `magick`)
@@ -18,10 +18,8 @@ set -eu
 
 root=$(cd "$(dirname "$0")/.." && pwd)
 cd "$root"
-version=$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugin.json | head -n 1)
-[ -n "$version" ] || { echo "plugin.json has no version" >&2; exit 1; }
-major=${version%%.*}
-m365_version="$((major + 1)).${version#*.}"
+m365_version=$(tr -d '[:space:]' < scripts/cowork-version)
+printf '%s' "$m365_version" | grep -Eq '^[1-9][0-9]*\.[0-9]+\.[0-9]+$' || { echo "scripts/cowork-version is not a version from 1.0.0 up" >&2; exit 1; }
 
 # A real path: the converter refuses a symlinked output path, and macOS temp
 # directories live behind the /var -> /private/var link.

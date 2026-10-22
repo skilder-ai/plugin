@@ -12,6 +12,7 @@
 //   - the three MCP configs name the same servers and the same https URLs
 //   - plugin.json, .claude-plugin/plugin.json and gemini-extension.json share one version
 //   - on a release tag vX.Y.Z, that version equals X.Y.Z
+//   - every version, the Cowork package's included, is 1.0.0 or above
 import { readFileSync, existsSync } from 'node:fs';
 
 const errors = [];
@@ -71,6 +72,10 @@ for (const url of [...Object.values(a), ...Object.values(b), ...Object.values(c)
 const versions = { 'plugin.json': portable?.version, '.claude-plugin/plugin.json': claude?.version, 'gemini-extension.json': gemini?.version };
 const distinct = new Set(Object.values(versions));
 if (distinct.size !== 1) fail(`versions differ: ${JSON.stringify(versions)}`);
+// Every version starts at 1.0.0: the plugin, the Cowork package, each skill.
+const FROM_ONE = /^[1-9]\d*\.\d+\.\d+$/;
+for (const [file, version] of Object.entries(versions)) if (!FROM_ONE.test(version ?? '')) fail(`${file}: version ${version} is below 1.0.0`);
+if (existsSync('scripts/cowork-version') && !FROM_ONE.test(readFileSync('scripts/cowork-version', 'utf8').trim())) fail('scripts/cowork-version is below 1.0.0');
 const tag = process.env.GITHUB_REF_NAME ?? '';
 if (/^v\d+\.\d+\.\d+$/.test(tag) && portable?.version !== tag.slice(1)) fail(`tag ${tag} but manifests say ${portable?.version}`);
 
