@@ -37,6 +37,10 @@ for (const file of files) {
   for (const key of isSkill ? ['name', 'description', 'version'] : ['description']) {
     if (!new RegExp(`^${key}:`, 'm').test(frontmatter)) errors.push(`${file}: frontmatter has no ${key}`);
   }
+  if (isSkill) {
+    const [, version = ''] = frontmatter.match(/^version:\s*(\S+)/m) ?? [];
+    if (version && !/^[1-9]\d*\.\d+\.\d+$/.test(version)) errors.push(`${file}: version ${version} is below 1.0.0`);
+  }
   frontmatter.split('\n').forEach((line) => {
     const [, key, value = ''] = line.match(/^([\w-]+):\s*(.*)$/) ?? [];
     if (key && !/^["'|>]/.test(value) && /:\s/.test(value)) errors.push(`${file}: frontmatter ${key} holds ": " unquoted; YAML reads it as a nested mapping`);
