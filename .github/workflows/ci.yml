@@ -41,6 +41,8 @@ jobs:
         run: |
           scripts/package-openai.sh
           ! unzip -l dist/*.zip | grep -E 'claude/|\.claude-plugin|\.mcp\.json|hooks'
+          mkdir -p "$RUNNER_TEMP/openai" && unzip -q dist/*.zip -d "$RUNNER_TEMP/openai"
+          ! grep -rni 'hook' "$RUNNER_TEMP/openai"
 
   claude-plugin:
     name: claude plugin validate
