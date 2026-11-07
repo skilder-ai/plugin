@@ -74,6 +74,7 @@ Three words, three different things.
 | `claude/commands/skilder.md` | Claude Code, Cowork | `/skilder <task>`: summarises the task, calls `init_skilder`, reports the suggested role, learns it. |
 | `claude/commands/{start,import,capture,activity,app}.md` | Claude Code, Cowork | `/skilder:start`, `/skilder:import`, `/skilder:capture`, `/skilder:activity`, `/skilder:app`: one line each, handing over to the matching skill, so other clients get the same behaviour from the skill alone. |
 | `claude/hooks.json` + `claude/scripts/` | Claude Code, Cowork | Two shell hooks: a line of context at session start; the session id remembered per project for a resumed conversation. No network, no permission change. |
+| `openai/README.md`, `openai/SECURITY.md` | ChatGPT, Codex directory | The README and SECURITY that `scripts/package-openai.sh` puts in the OpenAI ZIP in place of this repository's, describing only what that package holds. |
 | `plugin.json`, `mcp.json` | Codex, Copilot, Cursor, VS Code, Kiro | The Agent Plugins 1.0 manifest and MCP configuration. |
 | `.claude-plugin/`, `.mcp.json` | Claude | The Claude plugin manifest, the marketplace and the MCP configuration. |
 | `.agents/plugins/marketplace.json` | Codex, ChatGPT desktop | The same one-plugin marketplace in Codex's format, with its install and sign-in policy. |
