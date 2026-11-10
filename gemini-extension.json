@@ -1,6 +1,6 @@
 {
   "name": "skilder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Connect any agent to a Skilder workspace, where AI builders orchestrate the capabilities their agents use: plugins composed of skills, MCP tools and MCP Apps, served live over MCP and governed there.",
   "mcpServers": {
     "skilder": {
