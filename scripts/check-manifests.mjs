@@ -65,6 +65,19 @@ const c = servers(gemini, (s) => s.httpUrl);
 const same = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 if (!same(a, b)) fail(`mcp.json and .mcp.json name different servers or URLs: ${JSON.stringify(a)} vs ${JSON.stringify(b)}`);
 if (!same(a, c)) fail(`mcp.json and gemini-extension.json name different servers or URLs: ${JSON.stringify(a)} vs ${JSON.stringify(c)}`);
+// The OpenAI package ships openai/mcp.json in place of mcp.json: the same
+// servers, plus the OpenAI auth extension the Agent Plugins schema has no room
+// for. DCR, because Skilder's authorization server accepts only the `none`
+// auth method for a client metadata document and ChatGPT's declares
+// private_key_jwt.
+const openaiMcp = read('openai/mcp.json');
+const d = servers(openaiMcp, (s) => s.url);
+if (!same(a, d)) fail(`mcp.json and openai/mcp.json name different servers or URLs: ${JSON.stringify(a)} vs ${JSON.stringify(d)}`);
+for (const [name, server] of Object.entries(openaiMcp?.mcpServers ?? {})) {
+  const auth = server.extensions?.['com.openai']?.auth;
+  if (auth?.type !== 'oauth' || auth?.client?.mode !== 'dcr') fail(`openai/mcp.json: server "${name}" must declare OpenAI OAuth with client mode dcr`);
+  if (auth?.client && Object.keys(auth.client).some((k) => k !== 'mode')) fail(`openai/mcp.json: server "${name}" carries client fields besides mode`);
+}
 for (const [name, server] of Object.entries(claudeMcp?.mcpServers ?? {})) if (server.type !== 'http') fail(`.mcp.json: server "${name}" must be type http for the Claude directory`);
 for (const url of [...Object.values(a), ...Object.values(b), ...Object.values(c)]) if (!/^https:\/\//.test(url ?? '')) fail(`MCP URL is not https: ${url}`);
 
