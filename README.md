@@ -1,6 +1,6 @@
 # Skilder plugin
 
-[![Live on skills.sh](https://img.shields.io/badge/skills.sh-skilder--ai%2Fplugin-0e7490)](https://skills.sh/skilder-ai/plugin) [![skilder on DevHunt](https://devhunt.org/badge/skilder.svg?theme=light)](https://devhunt.org/tool/skilder)
+[![Live on skills.sh](https://img.shields.io/badge/skills.sh-skilder--ai%2Fplugin-0e7490)](https://skills.sh/skilder-ai/plugin) <a href="https://devhunt.org/tool/skilder" target="_blank" title="skilder on DevHunt"><img src="https://devhunt.org/badge/skilder.svg" alt="skilder - Featured on DevHunt" width="220" height="54" /></a>
 
 [Skilder](https://skilder.ai) is where AI builders orchestrate the capabilities their agents use at work. A builder composes plugins from skills, MCP tools and MCP Apps, publishes them to a workspace, and Skilder serves them live to any agent over MCP: the right plugin for the task, under the workspace's permissions and guardrails, with a record of every call.
 
