@@ -21,13 +21,13 @@ Connect this agent to the user's Skilder workspace. One endpoint, one browser si
 | Credential | Issued to the MCP client after approval and stored by the client. This agent never sees, stores or forwards it. |
 | What flows out | The tool calls this agent makes against the chosen workspace, recorded there for the workspace admins. |
 | What flows in | The roles and skills the workspace's own admins published for it. Workspace content, available only after approval. |
-| Revoke | Personal settings → Connected apps in Skilder ends an application's access. Removing the server entry from the client configuration stops that client from using the grant. A grant also expires on its own, for most clients 14 days after sign-in even when it is in use, and the next request signs in again. |
+| Revoke | Personal settings → Connected apps in Skilder revokes the grant on the server. Removing the server entry from the client configuration only stops that client from using the grant: the grant stays valid on the server until it is revoked there or expires. A grant expires on its own, for most clients 14 days after sign-in even when it is in use, and the next request signs in again. |
 
 ## Step 0: already connected, or already configured?
 
 Skip to Step 3 when the available tools already include one from Skilder (the session-initialisation tool that lists the workspace's roles).
 
-If this skill came with the Skilder plugin, the plugin has already configured the server, under the name `skilder`. Do not add a second entry. When its tools are not listed yet, the client has not signed in to it: tell the user to authenticate that server in their client (Claude Code: `/mcp`, then the `skilder` server), then go to Step 3.
+If this skill came with the Skilder plugin, the plugin has already configured the server, under the name `skilder`. Do not add a second entry. Read that entry's address first: it is the plugin's only when it equals the Server address in the table above, with or without a `?workspaceId=…` ending. If a `skilder` entry points anywhere else, tell the user what it points at and do not send them to sign in to it. When the address matches and its tools are not listed yet, the client has not signed in to it: tell the user to authenticate that server in their client (Claude Code: `/mcp`, then the `skilder` server), then go to Step 3.
 
 ## Step 1: confirm once
 

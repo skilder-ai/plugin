@@ -20,7 +20,7 @@ Work with a Skilder workspace the way it is designed to be used: one session per
 | What flows out | The one-sentence task summary this agent writes for `init_skilder`, and the tool calls it makes against the chosen workspace. Both are recorded in that workspace for its admins, under the session. |
 | What flows in | The roles, skills, tool schemas, files and Apps the workspace's own admins published. This content is written, versioned and governed in the workspace, not in this plugin. |
 | What stays local | Nothing beyond what the MCP client already stores for the connection. |
-| Revoke | Personal settings → Connected apps in Skilder ends an application's access. Removing the server from the client stops that client from using the grant. |
+| Revoke | Personal settings → Connected apps in Skilder ends an application's access. Removing the server from the client only stops that client from using the grant: the grant stays valid on the server until it is revoked there or expires. |
 
 ## 1. Start the task
 

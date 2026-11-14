@@ -60,7 +60,7 @@ Three words, three different things.
 | What flows out | The one-sentence task summary the agent writes for `init_skilder`, and the tool calls it makes against the chosen workspace. Both are recorded in that workspace for its admins, under a session. |
 | What flows in | The plugins, skills, tool schemas, files and MCP Apps the workspace's own builders published. |
 | What stays local | On Claude Code and Cowork only: one small file per project under the plugin's data directory, mode 0600, holding the Skilder session id, when it was issued and the task summary, so a resumed conversation can continue its session. Nothing else is written. |
-| Revoke | Personal settings → Connected apps in Skilder. Removing the server from the client stops that client from using the grant. |
+| Revoke | Personal settings → Connected apps in Skilder. Removing the server from the client only stops that client from using the grant: the grant stays valid on the server until it is revoked there or expires. |
 
 ## What is inside
 
