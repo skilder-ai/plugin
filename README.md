@@ -4,7 +4,9 @@
 
 [![Live on skills.sh](https://img.shields.io/badge/skills.sh-skilder--ai%2Fplugin-0e7490)](https://skills.sh/skilder-ai/plugin)
 
-[Skilder](https://skilder.ai) is where AI builders orchestrate the capabilities their agents use at work. A builder composes plugins from skills, MCP tools and MCP Apps, publishes them to a workspace, and Skilder serves them live to any agent over MCP: the right plugin for the task, under the workspace's permissions and guardrails, with a record of every call.
+[Skilder](https://skilder.ai) is one place to maintain the skills, MCP servers and MCP Apps your team's agents use. Builders group them into plugins in a workspace, and Skilder serves them live over MCP to Claude, ChatGPT, Codex and any other MCP client. A published change reaches every connected agent on its next task: no copies to sync across tools or machines, and no update for anyone to run.
+
+One connection takes the place of a configuration per server on every machine. The agent's tool list holds Skilder's own tools and does not grow with the number of servers connected: a workspace tool becomes callable once its skill is learned. Credentials for those servers stay in the workspace, guardrails check each call, and every call is recorded.
 
 This plugin is the entry point. It connects the agent to the workspace and teaches it the way Skilder works: start the task, learn the plugin that fits, then act, with a session id on every call.
 

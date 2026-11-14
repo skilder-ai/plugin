@@ -1,7 +1,7 @@
 ---
 name: import-skills-to-skilder
-description: Use when the user has Agent Skills (SKILL.md folders) on this machine or in this repo and wants them in their Skilder workspace, such as "import my skills to Skilder", "move my local skills into Skilder", "share these skills with my team" or "centralize our agent skills". Scans the usual skill folders, asks once which to import, and creates them with their files; they are published on creation (workspace admin or contributor). Not for drafting new capabilities from a conversation or document (capture-work-in-skilder).
-version: 2.2.0
+description: Use when the user has Agent Skills (SKILL.md folders) on this machine or in this repo and wants them in their Skilder workspace, such as "import my skills to Skilder", "move my local skills into Skilder", "share these skills with my team", "centralize our agent skills" or "keep my skills in sync across Claude, ChatGPT and Codex". Scans the usual skill folders, asks once which to import, and creates them with their files; they are published on creation (workspace admin or contributor). Not for drafting new capabilities from a conversation or document (capture-work-in-skilder).
+version: 2.3.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp

@@ -1,10 +1,10 @@
 # Skilder for ChatGPT and Codex
 
-[Skilder](https://skilder.ai) brings your team's skills to ChatGPT, the same ones your other agents use.
+[Skilder](https://skilder.ai) is one place to maintain the skills, MCP servers and MCP Apps your team's agents use.
 
-Your team writes its skills, tools and MCP Apps once in a Skilder workspace and groups them into plugins. ChatGPT, Codex and any other MCP client the team uses read those same plugins. When a skill changes in the workspace, every agent gets the new version on its next task, with nothing to reinstall.
+Your team builds them once in a Skilder workspace and groups them into plugins. ChatGPT, Codex and any other MCP client the team uses read that same workspace, so a published change reaches every agent on its next task, with no copies to sync and nothing to reinstall.
 
-The workspace stays in charge. Admins decide who gets which plugin, guardrails check tool calls before they run, and every call is recorded in Activity, whichever agent made it.
+The workspace stays in charge. Credentials for the connected tools are kept in the workspace, guardrails check tool calls before they run, admins can switch a tool off, and every call is recorded in Activity, whichever agent made it.
 
 ## Get started
 
