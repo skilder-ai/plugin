@@ -1,7 +1,7 @@
 ---
 name: list-or-build-skilder-apps
-description: Use when the user asks about Skilder Apps, the interactive cards a skill opens in the conversation, such as "list my Skilder Apps", "open the <name> App", "create a Skilder App" or "build a dashboard card for this skill". Lists and opens the workspace's Apps, or designs a first App with the user (its screen and the workspace tools it calls) and builds it after their go (workspace admin).
-version: 1.0.0
+description: Use when the user asks about Skilder Apps, the interactive cards a skill opens in the conversation, such as "list my Skilder Apps", "open the <name> App", "create a Skilder App" or "build a dashboard card for this skill". Lists and opens the workspace's Apps, or designs a first App with the user (its screen and the workspace tools it calls) and builds it after their go (workspace admin or contributor).
+version: 1.1.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp
@@ -17,10 +17,10 @@ A Skilder App is a small HTML component, written in the workspace, that the clie
 | | |
 |---|---|
 | Applies when | The Skilder tools are listed and the user asks to see, open or create a Skilder App. |
-| Listing and creating | Through `manage`, which Skilder lists to workspace admins. A member sees the Apps their skills name. |
+| Listing and creating | Through `manage`, which Skilder lists to workspace admins and contributors. A member sees the Apps their skills name. |
 | What flows out | For a new App: its name, description, HTML component and tool list, once the user approves them, to the chosen workspace. |
 | What flows in | The workspace's Apps, their tools and the skills they are attached to; the tools the workspace serves. |
-| Writes | Creating an App, attaching tools, publishing and attaching it to a skill, each after the user's go. |
+| Writes | Creating an App, attaching tools and attaching it to a skill, each after the user's go. Publishing a draft is the user's own step. |
 | What the App reaches | Only the tools attached to it, under the workspace's guardrails, with every call recorded. No network: the component carries its own scripts and styles. |
 
 ## Step 1: be connected
@@ -58,8 +58,8 @@ Once the user approves:
 1. Write the component as one self-contained HTML document, as the contract describes. Put no credential, key or personal data in it.
 2. Create it with `manage`'s `create-app`. It is published at once, with no tools, so it can do nothing yet. Say so.
 3. Attach the approved tools with `add-tool-to-app`. That opens a draft.
-4. Ask before `publish-app`: publishing makes the new version the one every member's agent opens.
-5. If a skill was agreed, attach the App with `attach-app-to-skill`. That edits the skill's draft; publishing the skill stays a human step in Skilder.
+4. No tool publishes that draft: the user does. Show the App's version card (`display` with `view` set to `version-card`) or point to the App editor in Skilder, and say that publishing makes the new version the one every member's agent opens.
+5. If a skill was agreed, attach the App with `attach-app-to-skill`. That edits the skill's draft, which the user publishes the same way.
 
 ## Step 5: try it and report
 
@@ -67,4 +67,4 @@ Open the App with `open_app` so the user sees it, or point them at the App edito
 
 ## For a member
 
-Listing and creating Apps needs a workspace admin. A member finds Apps through skills: `learn` the skill for the task, and its Apps section names each App with its `open_app` call. To see the Apps the user has already opened, use `analytics` with `tool_name: "app-usage"`. To get a new App, offer to write down what it should show and which tools it would call, for the user to hand to their admin.
+Listing and creating Apps needs a workspace admin or contributor. A member finds Apps through skills: `learn` the skill for the task, and its Apps section names each App with its `open_app` call. To see the Apps the user has already opened, use `analytics` with `tool_name: "app-usage"`. To get a new App, offer to write down what it should show and which tools it would call, for the user to hand to their admin.

@@ -1,7 +1,7 @@
 ---
 name: connect-to-skilder
 description: Connect this agent to the user's Skilder workspace over MCP with a browser OAuth sign-in. Checks whether Skilder is already connected or already configured by the Skilder plugin, asks once before adding the server to the MCP client configuration, then reports the roles and skills the workspace publishes. Trigger on "connect to Skilder", "set up Skilder", "add the Skilder MCP server".
-version: 2.1.0
+version: 2.2.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp
@@ -21,13 +21,13 @@ Connect this agent to the user's Skilder workspace. One endpoint, one browser si
 | Credential | Issued to the MCP client after approval and stored by the client. This agent never sees, stores or forwards it. |
 | What flows out | The tool calls this agent makes against the chosen workspace, recorded there for the workspace admins. |
 | What flows in | The roles and skills the workspace's own admins published for it. Workspace content, available only after approval. |
-| Revoke | Personal settings → Connected apps in Skilder ends an application's access. Removing the server entry from the client configuration stops that client from using the grant. A grant that goes unused lapses on its own after 14 days. |
+| Revoke | Personal settings → Connected apps in Skilder revokes the grant on the server. Removing the server entry from the client configuration only stops that client from using the grant: the grant stays valid on the server until it is revoked there or expires. A grant expires on its own, for most clients 14 days after sign-in even when it is in use, and the next request signs in again. |
 
 ## Step 0: already connected, or already configured?
 
 Skip to Step 3 when the available tools already include one from Skilder (the session-initialisation tool that lists the workspace's roles).
 
-If this skill came with the Skilder plugin, the plugin has already configured the server, under the name `skilder`. Do not add a second entry. When its tools are not listed yet, the client has not signed in to it: tell the user to authenticate that server in their client (Claude Code: `/mcp`, then the `skilder` server), then go to Step 3.
+If this skill came with the Skilder plugin, the plugin has already configured the server, under the name `skilder`. Do not add a second entry. Read that entry's address first: it is the plugin's only when it equals the Server address in the table above, with or without a `?workspaceId=…` ending. If a `skilder` entry points anywhere else, tell the user what it points at and do not send them to sign in to it. When the address matches and its tools are not listed yet, the client has not signed in to it: tell the user to authenticate that server in their client (Claude Code: `/mcp`, then the `skilder` server), then go to Step 3.
 
 ## Step 1: confirm once
 
@@ -35,14 +35,17 @@ Tell the user which command or configuration file will add the server (and, wher
 
 ## Step 2: add the server
 
-Use the client's own mechanism. The entry is the same everywhere.
+Use the client's own mechanism. The entry is the same everywhere: the server name `skilder` and the address in the block below. When the user hands you an address copied from Skilder (it ends in `?workspaceId=…` and pins one workspace), use that address as given. When the client already has a `skilder` entry for another workspace, name this one `skilder-<workspace name>` so the two do not clash.
+
+Quote the address in shell commands: zsh refuses a bare `?`.
 
 ```bash
 # Claude Code
-claude mcp add skilder --transport http https://app.skilder.ai/mcp
+claude mcp add --transport http skilder 'https://app.skilder.ai/mcp'
 
-# Codex
-codex mcp add skilder --url https://app.skilder.ai/mcp
+# Codex, then sign in
+codex mcp add skilder --url 'https://app.skilder.ai/mcp'
+codex mcp login skilder
 ```
 
 Clients configured by file (`.mcp.json`, Cursor's `~/.cursor/mcp.json`, VS Code's `.vscode/mcp.json`, `claude_desktop_config.json`) take this entry under the host's own top-level key (`mcpServers` on most hosts, `servers` on VS Code):
@@ -64,4 +67,4 @@ Once the server is added, the client's first connection to it opens the browser 
 
 ## Fallback: no browser redirect
 
-A client that cannot follow a browser redirect connects with a key instead, from Skilder's Connect page → Advanced. The key comes from the user.
+A client that cannot follow a browser redirect connects with a key instead, from Skilder's Connections page → Advanced. The key comes from the user.

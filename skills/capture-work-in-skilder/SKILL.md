@@ -1,7 +1,7 @@
 ---
 name: capture-work-in-skilder
-description: Use when the user wants to make something repeatable for their team in Skilder, such as "turn this into a skill", "save this workflow to Skilder", "make this a role for my team" or "build an App from this". Works from this conversation, a pasted SOP, a transcript, a document or a link. Decides whether the work belongs in skills, a role, an App, or a new version of what the workspace already holds. Suggests tools, or a connector to add, when the work needs one. Creates nothing before the user approves a short summary of what it will build (workspace admin).
-version: 1.0.0
+description: Use when the user wants to make something repeatable for their team in Skilder, such as "turn this into a skill", "save this workflow to Skilder", "make this a role for my team" or "build an App from this". Works from this conversation, a pasted SOP, a transcript, a document or a link. Decides whether the work belongs in skills, a role, an App, or a new version of what the workspace already holds. Suggests tools, or a connector to add, when the work needs one. Creates nothing before the user approves a short summary of what it will build (workspace admin or contributor).
+version: 1.1.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp
@@ -16,17 +16,17 @@ Turn what the user provided into the right building blocks in their Skilder work
 
 | | |
 |---|---|
-| Applies when | The Skilder tools are listed, the user wants work made repeatable in Skilder, and the user is a workspace admin (the `manage` tool is in the tool list). |
+| Applies when | The Skilder tools are listed, the user wants work made repeatable in Skilder, and the user is a workspace admin or contributor (the `manage` tool is in the tool list). |
 | Source | Only what the user points at: this conversation, text they pasted, a file or link they named. Nothing else is read. |
 | What flows out | What the user approves in the build summary, to the chosen workspace. |
 | What flows in | The workspace's roles, skills, Apps and tools, to reuse them and avoid duplicates. |
-| Review | A short build summary is approved in the conversation before anything is created. Skills and roles land as drafts; publishing them stays a human step in Skilder. |
+| Review | A short build summary is approved in the conversation before anything is created. A new skill, role or App is published as soon as it is created; a change to an existing one, and every file or tool attached afterwards, lands on a draft that only the user publishes. |
 
 ## Step 1: be connected
 
 If no Skilder tool is listed, follow the `connect-to-skilder` skill first. Then call `init_skilder` with a summary such as "turn this procedure into reusable workspace capabilities", and keep the session id for every other call.
 
-If `manage` is not listed, say that building in the workspace needs a workspace admin, and offer to write the build summary and the skill text here for the user to hand to their admin.
+If `manage` is not listed, say that building in the workspace needs a workspace admin or contributor, and offer to write the build summary and the skill text here for the user to hand to their admin.
 
 ## Step 2: read the source
 
@@ -62,6 +62,7 @@ In your Skilder workspace I will build:
 - App "<name>": <what it shows>, calling <tools>
 Suggested next: connect <system> to give "<skill>" <what it would do>.
 Left out: <credentials, personal data, anything skipped>
+New items are published when created. Changes to existing items wait as drafts for you to publish.
 ```
 
 Where the source is ambiguous, ask in the same message rather than filling the gap with a guess. Change the plan as the user asks, and show the summary again if it changed in substance.
@@ -74,4 +75,4 @@ Order: skills and their reference files, then their tools, then the role and its
 
 ## Step 7: report and next steps
 
-List what was created, in which role, and what is left as a draft to publish in Skilder. If a connector was suggested, offer to add it: a workspace admin adds MCP servers in Skilder, where any credential is entered in Skilder itself and never in this conversation. With the user's go, `manage` can install one by following `Skilder Platform Assistant: MCP Servers`, preferring a server's own OAuth sign-in so no secret passes through the agent.
+List what was created and is already published, in which role, and what waits on a draft. For each draft, offer the version card (`display` with `view` set to `version-card`) so the user can publish it, or point to Skilder. If a connector was suggested, offer to add it: a workspace admin adds MCP servers in Skilder, where any credential is entered in Skilder itself and never in this conversation. With the user's go, `manage` can install one by following `Skilder Platform Assistant: MCP Servers`, preferring a server's own OAuth sign-in so no secret passes through the agent.
