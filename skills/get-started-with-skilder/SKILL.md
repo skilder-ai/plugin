@@ -1,7 +1,7 @@
 ---
 name: get-started-with-skilder
 description: Use right after Skilder is connected, or when the user asks what Skilder can do, such as "Hey Skilder, get me started", "get started with Skilder", "what's in my Skilder workspace" or "show me around Skilder". Describes the workspace's plugins (roles) in plain language and runs one real first task through the best fit; on a new workspace, offers to import existing skills or set up a first plugin. Not for a user who already named a task (using-skilder).
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/skilder-ai/plugin
 metadata:
   endpoint: https://app.skilder.ai/mcp
@@ -19,7 +19,7 @@ Take a user from "just connected" to a first result with their Skilder workspace
 | Applies when | The user asks to get started, or has just connected Skilder and asks what it can do. Not for a user who already named a task: the `using-skilder` skill covers that. |
 | What flows out | A one-sentence summary of this first step, written for `init_skilder`, and the calls this agent makes against the chosen workspace. Both are recorded there for its admins. |
 | What flows in | The roles, skills and tools the workspace's admins published. |
-| Writes | None, unless the user approves creating a first role or importing skills. Creating needs workspace admin rights. |
+| Writes | None, unless the user approves creating a first role or importing skills. Creating needs a workspace admin or contributor, and what is created is published at once. |
 | What stays local | Everything on this machine. Reading local files happens only through the `import-skills-to-skilder` skill, with its own confirmation. |
 
 ## Step 1: be connected
@@ -39,7 +39,7 @@ Ask the user, in one question, what their job is and what takes most of their we
 - **Existing roles cover that work.** Name the one or two that fit best and what each does, in plain language. Offer to run a real first task through the best fit now: the user names one, or you suggest a sample. Then follow `using-skilder`: learn the role, learn the skill, do the task, give the output. This branch only reads.
 - **Nothing fits, or the workspace is new.** Offer two ways forward and let the user pick:
   - Bring what they already have: skills, prompts, rules or SOPs on this machine or in this repo. That is the `import-skills-to-skilder` skill.
-  - Start a first role together: propose, in one message, a role for their work, two or three skills behind it made of instructions and reference files only (no external tools), and a sample first task. Create nothing before the user says go. Then create the role and its skills with `manage`, `learn` the role, and run the first task through it.
+  - Start a first role together: propose, in one message, a role for their work, two or three skills behind it made of instructions and reference files only (no external tools), and a sample first task. Say that the role and its skills are published as soon as they are created, so every member's agent can learn them, and create nothing before the user says go. Then create the role and its skills with `manage`, `learn` the role, and run the first task through it.
 
 If the user mentions material they already have at any point, switch to the import.
 
@@ -51,6 +51,6 @@ End with three lines at most:
 - Where problems with a skill go: `feedback_skill`.
 - Where to see what happened: the Activity page in Skilder, or the `review-skilder-activity` skill.
 
-## When a step needs an admin
+## When a step needs an author
 
-`manage` is listed only to workspace admins. If it is not in the tool list and a step needs it, name that step, say what to ask the admin for, and finish everything else: the first task can still run from the drafted skill text in this conversation.
+`manage` is listed to those who may author in the workspace: its admins and contributors, not its members. If it is not in the tool list and a step needs it, name that step, say what to ask an admin for, and finish everything else: the first task can still run from the drafted skill text in this conversation.

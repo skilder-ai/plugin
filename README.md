@@ -41,7 +41,7 @@ Every client can add the plugin directly from this repository. Clients that mana
 
 The first Skilder call opens a browser sign-in on app.skilder.ai. The user signs in, picks one workspace and presses Approve. Nothing is granted before that press.
 
-If a `skilder` or `skilder-ai` server was added to the client by hand before the plugin, remove that entry: the plugin's server points at the same endpoint, and the duplicate costs a second sign-in.
+If a `skilder` or `skilder-ai` server was added to the client by hand before the plugin, remove that entry: the plugin's server points at the same endpoint, and the duplicate costs a second sign-in. An entry whose address ends in `?workspaceId=…` pins one workspace and is not a duplicate: keep it.
 
 ## Plugin, marketplace, workspace
 
@@ -68,10 +68,10 @@ Three words, three different things.
 |---|---|---|
 | `skills/using-skilder` | every client | The entry protocol: `init_skilder` with a task summary, learn the plugin (role) then the skill, the session id on every call, read vs write, files, MCP Apps, feedback, and what each refusal means. |
 | `skills/connect-to-skilder` | every client | Connects a client that has no Skilder server yet: discloses the connection, asks once, adds the entry, hands over to the browser sign-in. Recognises the plugin's own server and never adds a duplicate. |
-| `skills/import-skills-to-skilder` | every client | Imports the Agent Skills already on the machine into the workspace, as drafts, for a workspace admin. |
+| `skills/import-skills-to-skilder` | every client | Imports the Agent Skills already on the machine into the workspace, with their files, after one confirmation (workspace admin or contributor). |
 | `skills/get-started-with-skilder` | every client | First steps after connecting: what the workspace holds in plain language and one real first task, or, on a new workspace, an import or a first plugin. The onboarding skill ChatGPT and Codex run after install. |
-| `skills/capture-work-in-skilder` | every client | Turns this conversation or a named document into skills, a plugin (role), an App or a new version of existing ones, as the work calls for; suggests tools or a connector; builds only after the user approves a short build summary (workspace admin). |
-| `skills/list-or-build-skilder-apps` | every client | Lists the workspace's Apps and opens one, or designs and builds a first App with the user: screen, tools, publish, attach to a skill, each after a go (workspace admin). |
+| `skills/capture-work-in-skilder` | every client | Turns this conversation or a named document into skills, a plugin (role), an App or a new version of existing ones, as the work calls for; suggests tools or a connector; builds only after the user approves a short build summary (workspace admin or contributor). |
+| `skills/list-or-build-skilder-apps` | every client | Lists the workspace's Apps and opens one, or designs and builds a first App with the user: screen, tools, attach to a skill, each after a go, with publishing left to the user (workspace admin or contributor). |
 | `skills/review-skilder-activity` | every client | A read-only receipt of what a session did: roles, skills, tools and how each call ended, through the `analytics` tool. |
 | `claude/commands/skilder.md` | Claude Code, Cowork | `/skilder <task>`: summarises the task, calls `init_skilder`, reports the suggested role, learns it. |
 | `claude/commands/{start,import,capture,activity,app}.md` | Claude Code, Cowork | `/skilder:start`, `/skilder:import`, `/skilder:capture`, `/skilder:activity`, `/skilder:app`: one line each, handing over to the matching skill, so other clients get the same behaviour from the skill alone. |
@@ -86,7 +86,7 @@ The skills follow the open [Agent Skills](https://agentskills.io) format, and th
 
 ## How a task runs
 
-1. The agent calls `init_skilder` with a one-sentence summary of the task it wrote itself. Skilder answers with the plugin that fits, or candidates, or the catalog, and a session id.
+1. The agent calls `init_skilder` with a one-sentence summary of the task it wrote itself. Skilder answers with the workspace's catalog of plugins and a session id; where the workspace has plugin suggestion on, it names the plugin that fits, or two or three candidates.
 2. The agent learns the plugin (`learn roles/<name>`), then the skill the task needs. With session tracking on, a tool is runnable only once its skill has been learned in that session.
 3. The agent runs the skill's tools through `run_read_tool` and `run_write_tool`, its scripts through `execute_script`, and opens the skill's MCP Apps with `open_app` where the client renders cards, with the session id on each call. Skilder applies the workspace's permissions and guardrails and records each call.
 4. At the end, `feedback_skill` tells the plugin's builders what worked.

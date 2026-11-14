@@ -16,7 +16,7 @@ A Skilder account is required. Documentation: [docs.skilder.ai](https://docs.ski
 
 ## How a task runs
 
-1. ChatGPT calls `init_skilder` with a one-sentence summary of the task. Skilder answers with the plugin that fits and a session id.
+1. ChatGPT calls `init_skilder` with a one-sentence summary of the task. Skilder answers with the workspace's plugins and a session id, and names the one that fits where the workspace has suggestion on.
 2. ChatGPT learns the plugin, then the skill the task needs.
 3. ChatGPT runs the skill's tools, opens its MCP Apps in the conversation, and carries the session id on each call. Skilder applies the workspace's permissions and guardrails and records each call.
 
