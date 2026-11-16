@@ -1,7 +1,7 @@
 {
   "name": "skilder",
   "displayName": "Skilder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "One place to maintain the skills, MCP servers and MCP Apps your team's agents use. Set them up once in a Skilder workspace, credentials included, and every connected agent gets each published change on its next task: no copies to sync, nothing to reinstall, and an audit trail of every call.",
   "author": {
     "name": "skilder.ai SA",

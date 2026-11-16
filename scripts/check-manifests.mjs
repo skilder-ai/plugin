@@ -67,15 +67,17 @@ if (!same(a, b)) fail(`mcp.json and .mcp.json name different servers or URLs: ${
 if (!same(a, c)) fail(`mcp.json and gemini-extension.json name different servers or URLs: ${JSON.stringify(a)} vs ${JSON.stringify(c)}`);
 // The OpenAI package ships openai/mcp.json in place of mcp.json: the same
 // servers, plus the OpenAI auth extension the Agent Plugins schema has no room
-// for. DCR, because Skilder's authorization server accepts only the `none`
-// auth method for a client metadata document and ChatGPT's declares
-// private_key_jwt.
+// for. CIMD, named so the package itself decides how ChatGPT and Codex sign
+// in: one DCR registration shared by Codex's desktop app, CLI and IDE
+// extension trips refresh-token replay detection. Nothing else in auth:
+// discovery supplies the endpoints and scopes.
 const openaiMcp = read('openai/mcp.json');
 const d = servers(openaiMcp, (s) => s.url);
 if (!same(a, d)) fail(`mcp.json and openai/mcp.json name different servers or URLs: ${JSON.stringify(a)} vs ${JSON.stringify(d)}`);
 for (const [name, server] of Object.entries(openaiMcp?.mcpServers ?? {})) {
   const auth = server.extensions?.['com.openai']?.auth;
-  if (auth?.type !== 'oauth' || auth?.client?.mode !== 'dcr') fail(`openai/mcp.json: server "${name}" must declare OpenAI OAuth with client mode dcr`);
+  if (auth?.type !== 'oauth' || auth?.client?.mode !== 'cimd') fail(`openai/mcp.json: server "${name}" must declare OpenAI OAuth with client mode cimd`);
+  if (auth && Object.keys(auth).some((k) => k !== 'type' && k !== 'client')) fail(`openai/mcp.json: server "${name}" carries auth fields besides type and client; discovery supplies endpoints and scopes`);
   if (auth?.client && Object.keys(auth.client).some((k) => k !== 'mode')) fail(`openai/mcp.json: server "${name}" carries client fields besides mode`);
 }
 for (const [name, server] of Object.entries(claudeMcp?.mcpServers ?? {})) if (server.type !== 'http') fail(`.mcp.json: server "${name}" must be type http for the Claude directory`);
