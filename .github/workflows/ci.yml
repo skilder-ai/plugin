@@ -40,10 +40,36 @@ jobs:
       - name: OpenAI package builds without Claude-only files
         run: |
           scripts/package-openai.sh
-          ! unzip -l dist/*.zip | grep -E 'claude/|\.claude-plugin|\.mcp\.json|hooks'
+          unzip -l dist/*.zip | grep -E 'claude/|\.claude-plugin|\.mcp\.json|hooks' && exit 1
           mkdir -p "$RUNNER_TEMP/openai" && unzip -q dist/*.zip -d "$RUNNER_TEMP/openai"
-          ! grep -rni 'hook' "$RUNNER_TEMP/openai"
+          grep -rni 'hook' "$RUNNER_TEMP/openai" && exit 1
           test "$(cd "$RUNNER_TEMP/openai/assets" && ls | tr '\n' ' ')" = 'icon.png logo.png '
+      - name: Keep the OpenAI package
+        uses: actions/upload-artifact@v4
+        with:
+          name: openai-package
+          path: dist/*.zip
+          if-no-files-found: error
+
+  release:
+    name: Attach the OpenAI package to the release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [check, claude-plugin]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # The ZIP the check job built and inspected, not a rebuild.
+      - uses: actions/download-artifact@v4
+        with:
+          name: openai-package
+      - name: Create the release if it does not exist, then attach the ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes
+          gh release upload "$GITHUB_REF_NAME" skilder-openai-*.zip --clobber
 
   claude-plugin:
     name: claude plugin validate
