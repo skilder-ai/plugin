@@ -9,7 +9,7 @@
           "auth": {
             "type": "oauth",
             "client": {
-              "mode": "dcr"
+              "mode": "cimd"
             }
           }
         }

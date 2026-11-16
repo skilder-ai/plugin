@@ -3,7 +3,7 @@
 # platform.openai.com/plugins. The archive carries the portable plugin only:
 # plugin.json, mcp.json, skills/, the two listing icons, LICENSE, and the README and
 # SECURITY written for that directory (openai/), and openai/mcp.json as
-# mcp.json: the same server with the OpenAI auth extension (DCR). Everything Claude Code reads
+# mcp.json: the same server with the OpenAI auth extension (CIMD). Everything Claude Code reads
 # (claude/, .claude-plugin/, .mcp.json), the other clients' manifests and the
 # repository's own README and SECURITY stay out: a plugin that ships, or
 # describes, lifecycle hooks is not eligible for that directory. The README
