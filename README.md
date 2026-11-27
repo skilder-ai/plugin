@@ -23,9 +23,11 @@ A two-minute tour: an agent connects, takes on a plugin, runs its skills and too
 
 ## Why a platform
 
-Plugins should not stay an engineering thing. The people who know how the work really runs, in operations, finance, sales or support, are the ones who should shape the skills their agents follow.
+**Plugins should not stay an engineering thing.** Today a plugin is a Git repository, a manifest and a release. The people who know how the work actually runs, the controller closing the month, the ops lead dispatching crews, the support lead who knows every edge case, cannot touch it. Their know-how ends up in a prompt someone pasted once, or never reaches the agent at all.
 
-Today those skills live as flat files: Markdown in a GitHub repo, a page in Notion, a document in a shared drive, copied onto each machine and stale soon after. A skill is a living artifact. It gets corrected, versioned, wired to tools and credentials, and used by many agents at once. Running that at scale takes a platform: versions, permissions, guardrails and a record of every call, in one place the whole team can work in.
+**Skills are not files.** Kept as Markdown in a repository, a Notion page or a shared drive, a skill is copied onto each machine and starts ageing the moment it lands. Nobody knows which version an agent ran, who may call the tool behind it, where its credentials sit, or whether it worked. A skill is a living artifact: corrected as the work changes, wired to tools and credentials, used by many agents at once.
+
+**Skilder is where you operate it.** Experts and builders shape skills, MCP tools and Apps together in a workspace. A published change reaches every connected agent on its next task. Permissions, guardrails and credentials stay in the workspace, every call is recorded, and agents report back what worked so the next version is better.
 
 ## Install
 
