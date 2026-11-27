@@ -21,6 +21,12 @@ A two-minute tour: an agent connects, takes on a plugin, runs its skills and too
   <img src="assets/demo.jpg" alt="Watch the Skilder tour: the Warehouse Pulse app open inside an AI assistant" width="800">
 </a>
 
+## Why a platform
+
+Plugins should not stay an engineering thing. The people who know how the work really runs, in operations, finance, sales or support, are the ones who should shape the skills their agents follow.
+
+Today those skills live as flat files: Markdown in a GitHub repo, a page in Notion, a document in a shared drive, copied onto each machine and stale soon after. A skill is a living artifact. It gets corrected, versioned, wired to tools and credentials, and used by many agents at once. Running that at scale takes a platform: versions, permissions, guardrails and a record of every call, in one place the whole team can work in.
+
 ## Install
 
 Every client can add the plugin directly from this repository. Clients that manage plugins through marketplaces can also add this repository as a marketplace: it lists one plugin, `skilder`, and that is how an administrator allows, installs by default or requires it for a whole team.
