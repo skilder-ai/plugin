@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://skilder.ai"><img src="assets/banner.webp" alt="The Skilder mascot waving hi next to the title Skilder plugin and the tagline Stream your AI plugins. Stop installing them. One install, then every skill, MCP server and App you publish plays in every agent: Claude, Codex, ChatGPT, Copilot, Cursor and Gemini CLI." width="100%"></a>
+  <a href="https://skilder.ai"><img src="assets/banner.webp" alt="The Skilder mascot waving hi next to the title Skilder plugin and the tagline Stream your AI plugins. Stop installing them. Works with Claude, Codex, ChatGPT, Copilot, Cursor and Gemini CLI." width="100%"></a>
 </p>
 
 # Skilder plugin
