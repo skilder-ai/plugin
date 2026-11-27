@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://skilder.ai"><img src="assets/banner.webp" alt="The Skilder mascot waving hi next to the title Skilder plugin: one place for the skills, MCP servers and MCP Apps your team's agents use, served live with nothing to sync, in Claude, Codex, ChatGPT, Copilot, Cursor and Gemini CLI." width="100%"></a>
+  <a href="https://skilder.ai"><img src="assets/banner.webp" alt="The Skilder mascot waving hi next to the title Skilder plugin and the tagline Stream your AI plugins. Stop installing them. One install, then every skill, MCP server and App you publish plays in every agent: Claude, Codex, ChatGPT, Copilot, Cursor and Gemini CLI." width="100%"></a>
 </p>
 
 # Skilder plugin
@@ -11,7 +11,7 @@
 [![License: MIT](https://img.shields.io/github/license/skilder-ai/plugin?color=0a0a0a)](LICENSE)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20%C2%B7%20Codex%20%C2%B7%20ChatGPT%20%C2%B7%20Copilot%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20CLI-65d0ea)](#install)
 
-> [Skilder](https://skilder.ai) is one place to maintain the skills, MCP servers and MCP Apps your team's agents use. This plugin connects an agent to your Skilder workspace and teaches it how to use it.
+> Think Spotify for AI plugins: your own plugin marketplace, streamed. Build skills, MCP servers and MCP Apps in a [Skilder workspace](https://skilder.ai), and every agent connected through this plugin runs the published version on its next task: one install, no per-machine config, nothing to sync.
 
 ## See it
 
