@@ -23,11 +23,14 @@ A two-minute tour: an agent connects, takes on a plugin, runs its skills and too
 
 ## Why a platform
 
-**Plugins should not stay an engineering thing.** Today a plugin is a Git repository, a manifest and a release. The people who know how the work actually runs, the controller closing the month, the ops lead dispatching crews, the support lead who knows every edge case, cannot touch it. Their know-how ends up in a prompt someone pasted once, or never reaches the agent at all.
+Git is a good way to version a skill. It is a poor way to run one.
 
-**Skills are not files.** Kept as Markdown in a repository, a Notion page or a shared drive, a skill is copied onto each machine and starts ageing the moment it lands. Nobody knows which version an agent ran, who may call the tool behind it, where its credentials sit, or whether it worked. A skill is a living artifact: corrected as the work changes, wired to tools and credentials, used by many agents at once.
+- **Copies drift.** Every install is a snapshot. Fix a skill and each machine keeps the old one until someone reinstalls.
+- **The people who know the process can't edit it.** The ops or finance lead sends corrections over Slack, and you become the bottleneck.
+- **No view of what ran.** You can't tell which version an agent used, which tools it called, or whether it worked.
+- **Credentials live on laptops.** Each MCP server needs its own config and secrets on every machine.
 
-**Skilder is where you operate it.** Experts and builders shape skills, MCP tools and Apps together in a workspace. A published change reaches every connected agent on its next task. Permissions, guardrails and credentials stay in the workspace, every call is recorded, and agents report back what worked so the next version is better.
+In Skilder, skills, MCP tools and Apps live in a workspace: edited there, versioned, permissioned, recorded per call, and served to the agent when it needs them.
 
 ## Install
 
